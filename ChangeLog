@@ -1,0 +1,9 @@
+2000-11-26  Masahito Ohtsuka  <negi@system-pc11.good-comm.ad.jp>
+
+	* mailexpire.c: ループの最適化
+
+2000-11-25  Masahito Ohtsuka  <negi@system-pc11.good-comm.ad.jp>
+
+	* mailexpire.c: 1.0.0 リリース
+
+	* mailexpire.c: FreeBSD でまともに動くようにした

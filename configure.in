@@ -1,0 +1,41 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(mailexpire.c)
+AM_INIT_AUTOMAKE(mailexpire, 1.0.1)
+AM_CONFIG_HEADER(config.h)
+
+dnl Checks for programs.
+AC_PROG_CC
+
+dnl Checks for libraries.
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(fcntl.h sys/file.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_STRUCT_TM
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(mktime)
+
+AC_MSG_CHECKING([for mail spool directory])
+if test -d /usr/mail
+then
+    maildir="/usr/mail"
+elif test -d /usr/spool/mail
+then
+    maildir="/usr/spool/mail"
+elif test -d /var/mail 
+then
+    maildir="/var/mail"
+elif test -d /var/spool/mail
+then
+    maildir="/var/spool/mail"
+else
+    AC_MSG_RESULT([ERROR: Couln't locate the mail spool])
+    exit 1
+fi
+AC_MSG_RESULT("found at $maildir")
+AC_DEFINE_UNQUOTED(MAILDIR, "$maildir")
+
+AC_OUTPUT(Makefile)
